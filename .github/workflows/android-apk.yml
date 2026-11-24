@@ -14,6 +14,12 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
+      - name: Extract project
+        if: hashFiles('africa_quiz_android_project.zip') != ''
+        run: |
+          unzip -o africa_quiz_android_project.zip
+          cp -R africa_quiz_android/. .
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
